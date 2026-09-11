@@ -1,0 +1,177 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+    --primary: #5B21B6;
+    --primary-hover: #7C3AED;
+    --primary-bg: #EEF2FF;
+    --text-main: #0F172A;
+    --text-muted: #64748B;
+    --bg-app: #F8FAFC;
+    --white: #FFFFFF;
+    --border: #E2E8F0;
+    --danger: #EF4444;
+    --danger-bg: #FEF2F2;
+    --danger-border: #FCA5A5;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--bg-app);
+    color: var(--text-main);
+    display: flex;
+    height: 100vh;
+    overflow: hidden; /* لمنع التمرير للصفحة بأكملها، التمرير سيكون داخل المحتوى */
+}
+
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+
+/* --- تخطيط لوحة التحكم (Dashboard Layout) --- */
+.dashboard-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+/* --- الشريط الجانبي (Sidebar) --- */
+.sidebar {
+    width: 260px;
+    background-color: var(--white);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    flex-shrink: 0;
+}
+
+.sidebar-header {
+    margin-bottom: 2.5rem;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--text-main);
+    margin-bottom: 0.25rem;
+}
+
+.logo img {
+    width: 100%;
+}
+
+.logo-icon {
+    background-color: var(--primary);
+    color: var(--white);
+    width: 32px;
+    height: 32px;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+}
+
+.admin-subtitle {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+    padding-left: 2.75rem;
+}
+
+.menu-section {
+    margin-bottom: 2rem;
+}
+
+.menu-title {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.2s;
+    margin-bottom: 0.25rem;
+}
+
+.menu-item:hover {
+    background-color: var(--bg-app);
+    color: var(--text-main);
+}
+
+.menu-item.active {
+    background-color: var(--primary-bg);
+    color: var(--primary);
+}
+
+.sidebar-footer {
+    margin-top: auto; /* دفع الزر للأسفل */
+}
+
+.back-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+    background-color: var(--bg-app);
+}
+
+.back-link:hover { background-color: #E2E8F0; color: var(--text-main); }
+
+/* --- الأزرار العامة وحقول الإدخال --- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    color: var(--white);
+}
+
+.btn-primary:hover { background-color: var(--primary-hover); }
+
+.input-control, .select-control {
+    padding: 0.6rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-main);
+    background-color: var(--white);
+    outline: none;
+}
+.input-control:focus, .select-control:focus { border-color: var(--primary); }
