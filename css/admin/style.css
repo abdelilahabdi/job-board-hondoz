@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
@@ -27,20 +26,25 @@ body {
     color: var(--text-main);
     display: flex;
     height: 100vh;
-    overflow: hidden; /* لمنع التمرير للصفحة بأكملها، التمرير سيكون داخل المحتوى */
+    overflow: hidden;
 }
 
-a { text-decoration: none; color: inherit; }
-ul { list-style: none; }
+a {
+    text-decoration: none;
+    color: inherit;
+}
 
-/* --- تخطيط لوحة التحكم (Dashboard Layout) --- */
+ul {
+    list-style: none;
+}
+
+
 .dashboard-container {
     display: flex;
     width: 100%;
     height: 100%;
 }
 
-/* --- الشريط الجانبي (Sidebar) --- */
 .sidebar {
     width: 260px;
     background-color: var(--white);
@@ -125,7 +129,7 @@ ul { list-style: none; }
 }
 
 .sidebar-footer {
-    margin-top: auto; /* دفع الزر للأسفل */
+    margin-top: auto;
 }
 
 .back-link {
@@ -141,9 +145,11 @@ ul { list-style: none; }
     background-color: var(--bg-app);
 }
 
-.back-link:hover { background-color: #E2E8F0; color: var(--text-main); }
+.back-link:hover {
+    background-color: #E2E8F0;
+    color: var(--text-main);
+}
 
-/* --- الأزرار العامة وحقول الإدخال --- */
 .btn {
     display: inline-flex;
     align-items: center;
@@ -163,9 +169,12 @@ ul { list-style: none; }
     color: var(--white);
 }
 
-.btn-primary:hover { background-color: var(--primary-hover); }
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+}
 
-.input-control, .select-control {
+.input-control,
+.select-control {
     padding: 0.6rem 1rem;
     border: 1px solid var(--border);
     border-radius: 0.5rem;
@@ -174,4 +183,14 @@ ul { list-style: none; }
     background-color: var(--white);
     outline: none;
 }
-.input-control:focus, .select-control:focus { border-color: var(--primary); }
+
+.input-control:focus,
+.select-control:focus {
+    border-color: var(--primary);
+}
+
+@media (max-width: 891px) {
+    .sidebar {
+        display: none;
+    }
+}

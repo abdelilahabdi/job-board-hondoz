@@ -1,14 +1,9 @@
-/* =========================================
-   admin.css - تصميم صفحة (Gestion des offres)
-========================================= */
-
 .main-content {
     flex: 1;
-    overflow-y: auto; /* يسمح بالتمرير داخل المحتوى فقط */
+    overflow-y: auto;
     padding: 2.5rem 3rem;
 }
 
-/* --- رأس الصفحة (Header) --- */
 .page-header {
     display: flex;
     justify-content: space-between;
@@ -27,12 +22,12 @@
     font-size: 0.95rem;
 }
 
-/* --- شريط الفلاتر والبحث --- */
 .filters-bar {
     display: flex;
     gap: 1rem;
     align-items: center;
     margin-bottom: 1.5rem;
+    flex-wrap: wrap;
 }
 
 .search-wrapper {
@@ -60,12 +55,11 @@
     margin-left: auto;
 }
 
-/* --- جدول العروض (Data Table) --- */
 .table-container {
     background-color: var(--white);
     border: 1px solid var(--border);
     border-radius: 0.75rem;
-    overflow-x: auto;
+    overflow-x:scroll;
 }
 
 .data-table {
@@ -74,7 +68,8 @@
     min-width: 900px;
 }
 
-.data-table th, .data-table td {
+.data-table th,
+.data-table td {
     padding: 1.25rem 1.5rem;
     text-align: left;
     border-bottom: 1px solid var(--border);
@@ -103,9 +98,11 @@
     font-size: 0.95rem;
 }
 
-.text-gray { color: var(--text-muted); font-size: 0.9rem; }
+.text-gray {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
 
-/* --- الشارات (Badges) --- */
 .badge {
     padding: 0.25rem 0.75rem;
     border-radius: 1rem;
@@ -124,7 +121,6 @@
     color: #15803D;
 }
 
-/* --- التقنيات (Tech Tags) --- */
 .tech-list {
     display: flex;
     gap: 0.4rem;
@@ -141,7 +137,6 @@
     font-weight: 500;
 }
 
-/* --- أزرار الإجراءات (Actions) --- */
 .actions-cell {
     display: flex;
     gap: 0.5rem;
@@ -162,7 +157,10 @@
     transition: all 0.2s;
 }
 
-.btn-action:hover { background-color: var(--bg-app); color: var(--text-main); }
+.btn-action:hover {
+    background-color: var(--bg-app);
+    color: var(--text-main);
+}
 
 .btn-delete {
     border-color: var(--danger-border);
