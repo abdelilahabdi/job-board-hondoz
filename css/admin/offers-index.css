@@ -1,0 +1,175 @@
+/* =========================================
+   admin.css - تصميم صفحة (Gestion des offres)
+========================================= */
+
+.main-content {
+    flex: 1;
+    overflow-y: auto; /* يسمح بالتمرير داخل المحتوى فقط */
+    padding: 2.5rem 3rem;
+}
+
+/* --- رأس الصفحة (Header) --- */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+}
+
+.page-header h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.page-header p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+/* --- شريط الفلاتر والبحث --- */
+.filters-bar {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.search-wrapper {
+    position: relative;
+    flex: 1;
+}
+
+.search-wrapper i {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+}
+
+.search-wrapper input {
+    width: 100%;
+    padding-left: 2.5rem;
+}
+
+.results-count {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    white-space: nowrap;
+    margin-left: auto;
+}
+
+/* --- جدول العروض (Data Table) --- */
+.table-container {
+    background-color: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    overflow-x: auto;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 900px;
+}
+
+.data-table th, .data-table td {
+    padding: 1.25rem 1.5rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+}
+
+.data-table th {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background-color: var(--white);
+}
+
+.data-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.data-table tbody tr:hover {
+    background-color: var(--bg-app);
+}
+
+.job-title {
+    font-weight: 600;
+    color: var(--text-main);
+    font-size: 0.95rem;
+}
+
+.text-gray { color: var(--text-muted); font-size: 0.9rem; }
+
+/* --- الشارات (Badges) --- */
+.badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.badge-stage {
+    background-color: #F3E8FF;
+    color: #7E22CE;
+}
+
+.badge-alt {
+    background-color: #DCFCE7;
+    color: #15803D;
+}
+
+/* --- التقنيات (Tech Tags) --- */
+.tech-list {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+    max-width: 250px;
+}
+
+.tech-tag {
+    background-color: #F1F5F9;
+    color: #475569;
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+/* --- أزرار الإجراءات (Actions) --- */
+.actions-cell {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btn-action {
+    background: transparent;
+    border: 1px solid var(--border);
+    padding: 0.4rem 0.8rem;
+    border-radius: 0.5rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: all 0.2s;
+}
+
+.btn-action:hover { background-color: var(--bg-app); color: var(--text-main); }
+
+.btn-delete {
+    border-color: var(--danger-border);
+    color: var(--danger);
+}
+
+.btn-delete:hover {
+    background-color: var(--danger-bg);
+    color: var(--danger);
+}
