@@ -1,6 +1,6 @@
-import { getData } from "./data.js";
-import { renderOffers } from "./render.js";
-import { paginate } from "./paginate.js";
+import { getData } from "./utils/data.js";
+import { renderOffers } from "./utils/render.js";
+import { paginate } from "./utils/paginate.js";
 
 const paginationBtn = document.querySelector(".pagination-btn")
 const CardContainer = document.querySelector(".grid")
