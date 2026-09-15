@@ -120,7 +120,22 @@ function CardCreator(offer) {
     return cardContainer
 }
 
+function cityContainerCreator(city) {
+    const option = document.createElement('option')
+    option.value = city
+    option.textContent = city
 
+    return option
+}
+
+function technologiesContainerCreator(technologies) {
+    const option = document.createElement('span')
+    option.dataset.technology = technologies
+    option.textContent = technologies
+    option.classList.add('tech-pill')
+
+    return option
+}
 
 export function renderOffers(parent, offers) {
 
@@ -128,4 +143,36 @@ export function renderOffers(parent, offers) {
         const card = CardCreator(offer)
         parent.appendChild(card)
     });
+}
+
+export function renderSearchInfo(cityContainer, technologiesContainer, offers) {
+    const cities = offers.reduce((acc, offer) => {
+        if (!acc.includes(offer.city)) {
+            acc.push(offer.city)
+        }
+        return acc
+    }, [])
+
+    const technologies = offers.reduce ((acc, offer) => {
+        offer.technologies.forEach(technology => {
+            if (!acc.includes(technology)) {
+                acc.push(technology)
+            }
+        })
+        return acc
+    }, [])
+
+    cities.forEach(city => {
+        const option = cityContainerCreator(city)
+
+        cityContainer.appendChild(option)
+    })
+
+    technologies.forEach(technology => {
+
+        const option = technologiesContainerCreator(technology)
+
+        technologiesContainer.appendChild(option)
+    })
+
 }
