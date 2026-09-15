@@ -1,37 +1,3 @@
-{/* <html>
-    <article class="card">
-        <div class="card-header">
-            <div class="company">
-                <div class="company-logo" style="color:#EF4444; background:#FEF2F2;">N</div>
-                Nexora Digital
-            </div>
-            <i class="fa-regular fa-heart heart-icon"></i>
-        </div>
-        <h3 class="card-title">Frontend React Developer</h3>
-        <div class="card-meta">
-            <span class="badge badge-stage">Internship</span>
-            <span class="meta-item"><i class="fa-solid fa-location-dot"></i> Paris</span>
-            <span class="meta-item"><i class="fa-regular fa-calendar"></i> September 5, 2026</span>
-            <span class="meta-item" style="background:#F1F5F9; padding:2px 8px; border-radius:12px;">6
-                months</span>
-        </div>
-        <p class="card-desc">Join our product team to develop user interfaces...</p>
-        <div class="tags">
-            <span class="tag">React</span>
-            <span class="tag">TypeScript</span>
-            <span class="tag">Tailwind CSS</span>
-            <span class="tag">Vite</span>
-        </div>
-        <div class="card-footer">
-            <a href="#" class="btn-link">View offer <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-    </article>
-</html> */}
-
-
-
-
-
 function CardCreator(offer) {
 
     const cardContainer = document.createElement('article')
