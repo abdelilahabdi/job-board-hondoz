@@ -100,7 +100,7 @@ function CardCreator(offer) {
 
     const offerLink = document.createElement('a')
     offerLink.classList.add('btn-link')
-    offerLink.href = '#'
+    offerLink.href = './public/offer-details.html?id=' + offer.id
     offerLink.innerHTML = `
         View offer <i class="fa-solid fa-arrow-right"></i>
     `
