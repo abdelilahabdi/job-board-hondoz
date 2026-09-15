@@ -1,5 +1,10 @@
 export async function getData() {
-    const response = await fetch("./data/offers.json");
-    const data = await response.json()
-    return data;
+    try {
+        const response = await fetch("/data/offers.json");
+        const data = await response.json()
+        return data;
+    } catch (error) {
+        console.error("Error fetching data");
+        return [];
+    }
 }
