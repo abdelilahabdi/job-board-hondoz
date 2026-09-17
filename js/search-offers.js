@@ -16,64 +16,70 @@ const technologyTags = document.querySelectorAll('.tech-pill')
 const offerNumberTag = document.querySelector('.highlight-text')
 const clearBtn = document.querySelector(".btn-clear")
 const contratInputDeafult = document.querySelector(".contrat-deafult")
+const sortSelect = document.querySelector(".sort")
 
 renderOffers(offersContainer, offers)
 
 
 const filterOption = {
-    search : "" ,
-    city : "all",
-    contractType : "all" ,
-    technologiesChoosen : [],
-    sort : "asc"
+    search: "",
+    city: "all",
+    contractType: "all",
+    technologiesChoosen: [],
+    sort: "desc"
 }
 
 function filterOffers(offers) {
-    let newOffers = offers
-    const {search, city, contractType, technologiesChoosen} = filterOption;
-    if(search !== ""){
+    let newOffers = [...offers]
+    const { search, city, contractType, technologiesChoosen, sort } = filterOption;
+    if (search !== "") {
         newOffers = newOffers.filter(offer => offer.title.toLowerCase().includes(search))
     }
-    if(city !== "all"){
+    if (city !== "all") {
         newOffers = newOffers.filter(offer => offer.city === city)
     }
-    if(contractType !== "all"){
+    if (contractType !== "all") {
         newOffers = newOffers.filter(offer => offer.contractType === contractType)
     }
-    if(technologiesChoosen.length > 0){
+    if (technologiesChoosen.length > 0) {
         newOffers = newOffers.filter(offer => {
             let flag = false
             offer.technologies.forEach(offerTechnologies => {
                 technologiesChoosen.forEach(searchTechnologies => {
-                    if(offerTechnologies === searchTechnologies){
+                    if (offerTechnologies === searchTechnologies) {
                         flag = true
                     }
                 })
             })
-            if(flag){
+            if (flag) {
                 return true
             }
             return false
         })
     }
-    console.log(newOffers)
+    if (sort === "desc") {
+        newOffers = newOffers.sort((a, b) => new Date(b.publicationDate).getTime() - new Date(a.publicationDate).getTime())
+    } else {
+        newOffers = newOffers.sort((a, b) => new Date(a.publicationDate).getTime() - new Date(b.publicationDate).getTime())
+    }
+
     return newOffers
-    
+
 }
 
-searchInput.addEventListener('input' , () => {
+searchInput.addEventListener('input', () => {
     filterOption.search = searchInput.value.toLowerCase()
     renderOffers(offersContainer, filterOffers(offers))
 })
 
-citiesSelect.addEventListener("change" ,() => {
+citiesSelect.addEventListener("change", () => {
     filterOption.city = citiesSelect.value
     renderOffers(offersContainer, filterOffers(offers))
 })
 
 
 contractTypes.forEach(contractType => {
-    contractType.addEventListener("change" ,() => {
+    contractType.addEventListener("change", () => {
         filterOption.contractType = document.querySelector(".contrat:checked").value
         renderOffers(offersContainer, filterOffers(offers))
     })
@@ -81,33 +87,39 @@ contractTypes.forEach(contractType => {
 
 
 technologyTags.forEach(tech => {
-    tech.addEventListener('click' , () => {
-        if(!tech.classList.contains('active')){
+    tech.addEventListener('click', () => {
+        if (!tech.classList.contains('active')) {
             tech.classList.add('active')
             filterOption.technologiesChoosen.push(tech.textContent)
             renderOffers(offersContainer, filterOffers(offers))
             return
         }
         tech.classList.remove('active')
-        filterOption.technologiesChoosen = filterOption.technologiesChoosen.filter(technology => technology !==  tech.textContent)
+        filterOption.technologiesChoosen = filterOption.technologiesChoosen.filter(technology => technology !== tech.textContent)
         renderOffers(offersContainer, filterOffers(offers))
     })
 })
 
-// clearBtn.addEventListener("click", () => {
-//     let {search, city, contractType, technologiesChoosen} = filterOption;
-//     search = ""
-//     city = "all"
-//     contractType = "all"
-//     technologiesChoosen = []
-//     console.log(filterOption)
-//     searchInput.value = ''
-//     citiesSelect.value = 'all'
-//     contratInputDeafult.ariaChecked = true
-//     technologyTags.forEach(tech => {
-//         if(tech.classList.contains('active')){
-//             tech.classList.remove('active')
-//         }
-//     })
-//     renderOffers(offersContainer,offers)
-// })
+sortSelect.addEventListener("change", () => {
+    filterOption.sort = sortSelect.value
+    renderOffers(offersContainer, filterOffers(offers))
+})
+
+clearBtn.addEventListener("click", () => {
+    filterOption.search = ""
+    filterOption.city = "all"
+    filterOption.contractType = "all"
+    filterOption.technologiesChoosen = []
+    filterOption.sort = "desc"
+
+    searchInput.value = ''
+    citiesSelect.value = 'all'
+    contratInputDeafult.checked = true
+    sortSelect.value = 'desc'
+    technologyTags.forEach(tech => {
+        if (tech.classList.contains('active')) {
+            tech.classList.remove('active')
+        }
+    })
+    renderOffers(offersContainer, offers)
+})
