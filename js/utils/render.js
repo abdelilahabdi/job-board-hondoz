@@ -163,7 +163,6 @@ export function renderSearchInfo(cityContainer, technologiesContainer, offers) {
         })
         return acc
     }, [])
-    console.log(cities)
     cities.forEach(city => {
         const option = cityContainerCreator(city)
 
