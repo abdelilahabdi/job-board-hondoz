@@ -1,3 +1,6 @@
+  
+import { getFavorites , toggleFavorite } from "./storage.js"  
+
 function CardCreator(offer) {
 
     const cardContainer = document.createElement('article')
@@ -28,8 +31,47 @@ function CardCreator(offer) {
     companyContainer.appendChild(companyName)
 
     // Heart
-    const heartIcon = document.createElement('i')
-    heartIcon.classList.add('fa-regular', 'fa-heart', 'heart-icon')
+    // const heartIcon = document.createElement('i')
+    // heartIcon.classList.add('fa-regular', 'fa-heart', 'heart-icon')
+
+       ////
+
+
+    const favorites = getFavorites();
+    const isLiked = favorites.includes(offer.id);
+
+    const heartIcon = document.createElement('i');
+    heartIcon.classList.add('heart-icon');
+
+
+    if (isLiked) {
+        heartIcon.classList.add('fa-solid' , 'fa-heart');
+        heartIcon.style.color = '#EF4444';
+    } else {
+        heartIcon.classList.add('fa-regular' , 'fa-heart');
+        heartIcon.style.color = '#CBD5E1' ;
+    }
+
+
+    heartIcon.addEventListener('click', () => {
+        toggleFavorite(offer.id) ;
+
+        heartIcon.classList.toggle('fa-solid');
+        heartIcon.classList.toggle('fa-regular');
+
+        if (heartIcon.classList.contains('fa-solid')) {
+            heartIcon.style.color = '#EF4444';
+
+        } else {
+            heartIcon.style.color = '#CBD5E1' ;
+        }
+        
+    }) ;
+
+     
+
+
+ ///
 
     cardHeader.append(companyContainer, heartIcon)
 

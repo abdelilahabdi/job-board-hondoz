@@ -18,4 +18,6 @@ export function toggleFavorite(offerId){
     }else {
         favorites.push(offerId) ;
     }
+
+    localStorage.setItem('favorites', JSON.stringify(favorites)); //save changer f browser
 }
