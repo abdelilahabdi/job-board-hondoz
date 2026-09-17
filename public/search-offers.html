@@ -40,14 +40,13 @@
                     <label class="filter-label">Search</label>
                     <div class="input-wrapper">
                         <i class="fa-solid fa-magnifying-glass"></i>
-                        <input type="text" class="form-control" placeholder="Title, company, technology...">
+                        <input type="text" class="form-control search-input" placeholder="Title, company, technology...">
                     </div>
                 </div>
 
                 <div class="filter-group">
                     <label class="filter-label">City</label>
-                    <select class="form-control">
-                        <option value="all">All cities</option>
+                    <select class="form-control cities-select">
                         <!-- cities -->
                     </select>
                 </div>
@@ -56,13 +55,13 @@
                     <label class="filter-label">Contract Type</label>
                     <div class="radio-group">
                         <label class="radio-label">
-                            <input type="radio" name="contrat" checked> All
+                            <input type="radio" name="contrat" class="contrat contrat-deafult" value="all" checked> All
                         </label>
                         <label class="radio-label">
-                            <input type="radio" name="contrat"> Internship
+                            <input type="radio" name="contrat"  class="contrat" value="Internship"> Internship
                         </label>
                         <label class="radio-label">
-                            <input type="radio" name="contrat"> Work-study
+                            <input type="radio" name="contrat"  class="contrat" value="Apprenticeship"> Apprenticeship
                         </label>
                     </div>
                 </div>
@@ -84,14 +83,13 @@
 
                 <div class="filter-actions">
                     <button class="btn-clear">Clear All</button>
-                    <button class="btn-apply">Apply</button>
                 </div>
 
             </aside>
 
             <div class="results-list">
 
-                <article class="card">
+                <!-- <article class="card">
                     <div class="card-header">
                         <div class="company">
                             <div class="company-logo" style="color:#EF4444; background:#FEF2F2; border-color:#FCA5A5;">N
@@ -173,7 +171,7 @@
                         <span class="tag">Redis</span>
                     </div>
                     <a href="#" class="btn-outline-primary">View Offer <i class="fa-solid fa-arrow-right"></i></a>
-                </article>
+                </article> -->
 
             </div>
 

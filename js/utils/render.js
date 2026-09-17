@@ -180,7 +180,7 @@ function technologiesContainerCreator(technologies) {
 }
 
 export function renderOffers(parent, offers) {
-
+    parent.innerHTML = ''
     offers.forEach(offer => {
         const card = CardCreator(offer)
         parent.appendChild(card)
@@ -188,6 +188,8 @@ export function renderOffers(parent, offers) {
 }
 
 export function renderSearchInfo(cityContainer, technologiesContainer, offers) {
+    cityContainer.innerHTML = '<option value="all">All</option>'
+    technologiesContainer.innerHTML = ''
     const cities = offers.reduce((acc, offer) => {
         if (!acc.includes(offer.city)) {
             acc.push(offer.city)
@@ -203,7 +205,6 @@ export function renderSearchInfo(cityContainer, technologiesContainer, offers) {
         })
         return acc
     }, [])
-
     cities.forEach(city => {
         const option = cityContainerCreator(city)
 
