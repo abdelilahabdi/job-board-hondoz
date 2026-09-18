@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Favorites - StageFinder</title>
+    <title>Track Offers - StageFinder</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/public/style.css">
@@ -26,26 +26,32 @@
 
     <main class="container">
 
-        <header class="favorites-header">
-            <div class="header-title">
-                <div class="heart-icon-large"><i class="fa-solid fa-heart"></i></div>
-                <h1>My Favorites</h1>
-            </div>
-            <p>Keep track of the opportunities that interest you and come back to them anytime.</p>
-            <div class="saved-badge">4 saved offers</div>
-        </header>
+        
+        <section class="track-section">
+            <header class="favorites-header">
+                <div class="header-title">
+                    <div class="heart-icon-large"><i class="fa-solid fa-heart"></i></div>
+                    <h1>My Favorites</h1>
+                </div>
+                <p>Keep track of the opportunities that interest you and come back to them anytime.</p>
+            </header>
 
-        <div class="grid">
+            <div class="grid favorites-grid"></div>
+        </section>
 
-            
+        
+        <section class="track-section" style="margin-top: 50px;">
+            <header class="favorites-header">
+                <div class="header-title">
+                    <div class="heart-icon-large"><i class="fa-solid fa-paper-plane" style="color: #6366F1;"></i></div>
+                    <h1>Applied Offers</h1>
+                </div>
+                <p>Track the offers and internships you have applied for.</p>
+            </header>
 
-            
+            <div class="grid applications-grid"></div>
+        </section>
 
-            
-
-            
-
-        </div>
     </main>
 
     <footer class="site-footer">
@@ -65,8 +71,8 @@
                     <div class="footer-link-group">
                         <h4>Navigation</h4>
                         <ul>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Offers</a></li>
+                            <li><a href="../index.html">Home</a></li>
+                            <li><a href="./search-offers.html">Offers</a></li>
                             <li><a href="#">Companies</a></li>
                             <li><a href="#">Contact</a></li>
                         </ul>

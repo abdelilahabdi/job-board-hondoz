@@ -1,5 +1,5 @@
 import { getData } from "./utils/data.js";
-import { getFavorites, toggleFavorite } from "./utils/storage.js";
+import { getFavorites, toggleFavorite, getApplications, saveApplication } from "./utils/storage.js";
 
 const urlParams = new URLSearchParams(window.location.search);
 const offerId = urlParams.get('id');
@@ -18,7 +18,7 @@ if (!offer) {
 }
 
 function renderOfferDetails(offer) {
-    
+       
     const companyName = document.querySelector('.company-details h3');
     if (companyName) companyName.textContent = offer.company;
 
@@ -28,7 +28,7 @@ function renderOfferDetails(offer) {
     const companyLocation = document.querySelector('.company-details p');
     if (companyLocation) companyLocation.innerHTML = `<i class="fa-solid fa-location-dot"></i> ${offer.city}`;
 
-    
+      
     const jobTitle = document.querySelector('.job-title');
     if (jobTitle) jobTitle.textContent = offer.title;
 
@@ -48,7 +48,7 @@ function renderOfferDetails(offer) {
         });
     }
 
-    
+        
     const descriptions = document.querySelectorAll('.description-text');
     if (descriptions[0]) descriptions[0].textContent = offer.fullDescription || offer.shortDescription;
     if (descriptions[1]) descriptions[1].textContent = offer.profile || "No specific profile specified.";
@@ -62,7 +62,7 @@ function renderOfferDetails(offer) {
         summaryValues[3].textContent = offer.company;
     }
 
-   
+    
     const saveBtn = document.querySelector('.btn-outline');
     if (saveBtn) {
         updateSaveButtonState(saveBtn, offer.id);
@@ -70,6 +70,24 @@ function renderOfferDetails(offer) {
         saveBtn.addEventListener('click', () => {
             toggleFavorite(offer.id);
             updateSaveButtonState(saveBtn, offer.id);
+        });
+    }
+
+       
+    const applyBtn = document.querySelector('.apply-card .btn-primary');
+    if (applyBtn) {
+        updateApplyButtonState(applyBtn, offer.id);
+
+        applyBtn.addEventListener('click', () => {
+            saveApplication(offer.id);
+            updateApplyButtonState(applyBtn, offer.id);
+
+                 
+            if (offer.applyUrl) {
+                window.open(offer.applyUrl, '_blank');
+            } else if (offer.email) {
+                window.location.href = `mailto:${offer.email}`;
+            }
         });
     }
 }
@@ -84,5 +102,15 @@ function updateSaveButtonState(button, id) {
     } else {
         button.innerHTML = `<i class="fa-regular fa-heart"></i> Save`;
         button.classList.remove('saved');
+    }
+}
+
+function updateApplyButtonState(button, id) {
+    const apps = getApplications().map(item => String(item));
+    const isApplied = apps.includes(String(id));
+
+    if (isApplied) {
+        button.innerHTML = `Applied <i class="fa-solid fa-check"></i>`;
+        button.style.backgroundColor = "#10B981";
     }
 }

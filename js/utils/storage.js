@@ -25,4 +25,24 @@ export function toggleFavorite(offerId){
     const uniqueFavorites = [...new Set(favorites)];
 
     localStorage.setItem('favorites', JSON.stringify(uniqueFavorites)); //save changer f browser
+
+
+
+    
+}
+
+
+export function getApplications() {
+    const data = localStorage.getItem('applications');
+    return data ? JSON.parse(data) : [];
+}
+
+export function saveApplication(offerId) {
+    let apps = getApplications().map(item => String(item));
+    const id = String(offerId);
+    
+    if (!apps.includes(id)) {
+        apps.push(id);
+        localStorage.setItem('applications', JSON.stringify(apps));
+    }
 }
