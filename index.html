@@ -37,12 +37,14 @@
         <div class="search-box">
             <div class="search-input">
                 <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" placeholder="Job title, company, technology...">
+                <input id="search-title" type="text" placeholder="Job title">
             </div>
             <div class="search-divider"></div>
             <div class="search-input">
                 <i class="fa-solid fa-location-dot"></i>
-                <input type="text" placeholder="All cities">
+                <select id="search-city">
+                    <option value="all">All</option>
+                </select>
             </div>
             <button class="btn-primary" style="border-radius: 0.5rem; padding: 0.8rem 1.5rem;">Search</button>
         </div>

@@ -1,5 +1,6 @@
   
 import { getFavorites , toggleFavorite } from "./storage.js"  
+import { filterCities , filterTechnologies } from "./filterSearchData.js"
 
 function CardCreator(offer) {
 
@@ -142,7 +143,13 @@ function CardCreator(offer) {
 
     const offerLink = document.createElement('a')
     offerLink.classList.add('btn-link')
-    offerLink.href = './public/offer-details.html?id=' + offer.id
+    
+    const url = window.location.href
+    if(url.includes("public/")){
+        offerLink.href = './offer-details.html?id=' + offer.id
+    }else{
+        offerLink.href = './public/offer-details.html?id=' + offer.id
+    }
     offerLink.innerHTML = `
         View offer <i class="fa-solid fa-arrow-right"></i>
     `
@@ -180,7 +187,7 @@ function technologiesContainerCreator(technologies) {
 }
 
 export function renderOffers(parent, offers) {
-
+    parent.innerHTML = ''
     offers.forEach(offer => {
         const card = CardCreator(offer)
         parent.appendChild(card)
@@ -188,22 +195,11 @@ export function renderOffers(parent, offers) {
 }
 
 export function renderSearchInfo(cityContainer, technologiesContainer, offers) {
-    const cities = offers.reduce((acc, offer) => {
-        if (!acc.includes(offer.city)) {
-            acc.push(offer.city)
-        }
-        return acc
-    }, [])
+    cityContainer.innerHTML = '<option value="all">All</option>'
+    technologiesContainer.innerHTML = ''
+    const cities = filterCities(offers)
 
-    const technologies = offers.reduce ((acc, offer) => {
-        offer.technologies.forEach(technology => {
-            if (!acc.includes(technology)) {
-                acc.push(technology)
-            }
-        })
-        return acc
-    }, [])
-
+    const technologies = filterTechnologies(offers)
     cities.forEach(city => {
         const option = cityContainerCreator(city)
 
@@ -217,4 +213,13 @@ export function renderSearchInfo(cityContainer, technologiesContainer, offers) {
         technologiesContainer.appendChild(option)
     })
 
+}
+
+export function renderCitesHome(parent, cities){
+    cities.forEach(city => {
+        const option = document.createElement('option')
+        option.value = city
+        option.textContent = city
+        parent.appendChild(option)
+    });
 }
