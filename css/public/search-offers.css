@@ -45,7 +45,7 @@
 
 .search-layout {
     display: grid;
-    grid-template-columns: 300px 1fr;
+    grid-template-columns: 400px 1fr;
     gap: 2rem;
     align-items: start;
 }
@@ -55,10 +55,12 @@
     border-radius: 1rem;
     padding: 1.5rem;
     border: 1px solid var(--border-color);
+    position: sticky;
+    top: 20px;
 }
 
 .filter-group {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
 }
 
 .filter-group:last-child {
