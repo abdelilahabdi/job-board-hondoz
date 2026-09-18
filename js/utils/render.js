@@ -2,6 +2,29 @@
 import { getFavorites , toggleFavorite } from "./storage.js"  
 import { filterCities , filterTechnologies } from "./filterSearchData.js"
 
+function showNoData(container) {
+    const noDataContainer = document.createElement("div");
+    noDataContainer.className = "noDataContainer";
+
+    const noDataContent = document.createElement("div");
+    noDataContent.className = "noDataContent";
+
+    const title = document.createElement("h3");
+    title.textContent = "No offers found";
+
+    const message = document.createElement("p");
+    message.textContent = "We couldn't find any offers matching your search.";
+
+    noDataContent.append(
+        title,
+        message,
+    );
+
+    noDataContainer.append(noDataContent);
+
+    container.append(noDataContainer);
+}
+
 function CardCreator(offer) {
 
     const cardContainer = document.createElement('article')
@@ -195,6 +218,10 @@ function technologiesContainerCreator(technologies) {
 
 export function renderOffers(parent, offers) {
     parent.innerHTML = ''
+    if(offers.length == 0){
+        showNoData(parent)
+        return
+    }
     offers.forEach(offer => {
         const card = CardCreator(offer)
         parent.appendChild(card)

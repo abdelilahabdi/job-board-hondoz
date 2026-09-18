@@ -7,10 +7,10 @@ import { filterCities } from "./utils/filterSearchData.js";
 const paginationBtn = document.querySelector(".pagination-btn")
 const CardContainer = document.querySelector(".grid")
 const citiesSelect = document.querySelector('#search-city')
+const flex = document.querySelector(".flex")
 
 let pageNumber = 1
-let cardsrendered = 8
-
+let cardsrendered = 6
 const offers = await getData()
 
 const cities = filterCities(offers)
@@ -18,6 +18,8 @@ renderCitesHome(citiesSelect ,cities)
 loadMainSearchEvent()
 
 if (offers.length === 0) {
+    console.log('hello')
+    renderOffers(flex, [])
 } else {
     const paginatedOffers = paginate(offers, cardsrendered, pageNumber)
     renderOffers(CardContainer, paginatedOffers)
