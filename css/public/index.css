@@ -76,6 +76,16 @@
     color: var(--text-main);
 }
 
+.search-input select {
+    border: none;
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 4px;
+    background-color: white;
+    color: var(--text-main);
+    outline: none;
+}
+
 .search-divider {
     width: 1px;
     height: 24px;

@@ -1,5 +1,6 @@
 import { getData } from './utils/data.js'
 import { renderSearchInfo, renderOffers } from './utils/render.js'
+import { filterCities } from './utils/filterSearchData.js'
 
 const citiesContainer = document.querySelector('.filter-group select')
 const technologiesContainer = document.querySelector('.tech-cloud')
@@ -18,15 +19,26 @@ const clearBtn = document.querySelector(".btn-clear")
 const contratInputDeafult = document.querySelector(".contrat-deafult")
 const sortSelect = document.querySelector(".sort")
 
-renderOffers(offersContainer, offers)
-
-
 const filterOption = {
     search: "",
     city: "all",
     contractType: "all",
     technologiesChoosen: [],
     sort: "desc"
+}
+
+
+const searchData = JSON.parse(localStorage.getItem("searchData"))
+if(searchData != null){
+    filterOption.search = searchData.title
+    searchInput.value = searchData.title
+    citiesSelect.value = searchData.city
+    filterOption.city = searchData.city
+
+    renderOffers(offersContainer, filterOffers(offers))
+    localStorage.removeItem('searchData')
+}else{
+    renderOffers(offersContainer, offers)
 }
 
 function filterOffers(offers) {

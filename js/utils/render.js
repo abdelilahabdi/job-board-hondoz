@@ -1,5 +1,6 @@
   
 import { getFavorites , toggleFavorite } from "./storage.js"  
+import { filterCities , filterTechnologies } from "./filterSearchData.js"
 
 function CardCreator(offer) {
 
@@ -196,21 +197,9 @@ export function renderOffers(parent, offers) {
 export function renderSearchInfo(cityContainer, technologiesContainer, offers) {
     cityContainer.innerHTML = '<option value="all">All</option>'
     technologiesContainer.innerHTML = ''
-    const cities = offers.reduce((acc, offer) => {
-        if (!acc.includes(offer.city)) {
-            acc.push(offer.city)
-        }
-        return acc
-    }, [])
+    const cities = filterCities(offers)
 
-    const technologies = offers.reduce ((acc, offer) => {
-        offer.technologies.forEach(technology => {
-            if (!acc.includes(technology)) {
-                acc.push(technology)
-            }
-        })
-        return acc
-    }, [])
+    const technologies = filterTechnologies(offers)
     cities.forEach(city => {
         const option = cityContainerCreator(city)
 
@@ -224,4 +213,13 @@ export function renderSearchInfo(cityContainer, technologiesContainer, offers) {
         technologiesContainer.appendChild(option)
     })
 
+}
+
+export function renderCitesHome(parent, cities){
+    cities.forEach(city => {
+        const option = document.createElement('option')
+        option.value = city
+        option.textContent = city
+        parent.appendChild(option)
+    });
 }
