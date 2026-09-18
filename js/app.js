@@ -28,7 +28,7 @@ if (offers.length === 0) {
 
 paginationBtn.addEventListener("click", () => {
     const newPaginatedOffers = paginate(offers, cardsrendered, ++pageNumber)
-    renderOffers(CardContainer, newPaginatedOffers)
+    renderOffers(CardContainer, newPaginatedOffers, false)
     if (offers.length - (pageNumber * cardsrendered) <= 0) {
         paginationBtn.disabled = true
         paginationBtn.textContent = "No more offers to load"

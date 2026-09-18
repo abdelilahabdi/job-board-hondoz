@@ -216,8 +216,10 @@ function technologiesContainerCreator(technologies) {
     return option
 }
 
-export function renderOffers(parent, offers) {
-    parent.innerHTML = ''
+export function renderOffers(parent, offers, removeLast = true) {
+    if(removeLast){
+        parent.innerHTML = ''
+    }
     if(offers.length == 0){
         showNoData(parent)
         return
