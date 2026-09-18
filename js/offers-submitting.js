@@ -10,8 +10,9 @@ const allOffers = await getData() ;
 const favoriteIds = getFavorites();
 
 
-const favoriteOffers = allOffers.filter(offer => favoriteIds.includes(offer.id));
+const favoriteOffers = allOffers.filter(offer => favoriteIds.includes(String(offer.id)));
 
+gridContainer.innerHTML = "" ;
 if (favoriteOffers.length === 0) {
     gridContainer.innerHTML = "<p>no favorite offers saved yet. </p>";
 

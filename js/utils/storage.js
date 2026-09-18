@@ -1,23 +1,28 @@
 export function getFavorites() {
   const data = localStorage.getItem('favorites');
+  return data ? JSON.parse(data) : [] ;
 
-  if (data) {
-    return JSON.parse(data) ;
 
-  } else {
-    return [] ;
-  }
 }
 
 
+
+
 export function toggleFavorite(offerId){
-    let favorites = getFavorites();
-    if (favorites.includes(offerId)) {
-       favorites = favorites.filter(id => id !== offerId);
+    let favorites = getFavorites().map(item => String(item));
+
+    const id = String(offerId);
+
+    
+    
+    if (favorites.includes(id)) {
+       favorites = favorites.filter(item => item !== id);
 
     }else {
-        favorites.push(offerId) ;
+        favorites.push(id) ;
     }
 
-    localStorage.setItem('favorites', JSON.stringify(favorites)); //save changer f browser
+    const uniqueFavorites = [...new Set(favorites)];
+
+    localStorage.setItem('favorites', JSON.stringify(uniqueFavorites)); //save changer f browser
 }
