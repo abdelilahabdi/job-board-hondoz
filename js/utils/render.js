@@ -38,8 +38,8 @@ function CardCreator(offer) {
        ////
 
 
-    const favorites = getFavorites();
-    const isLiked = favorites.includes(offer.id);
+    const favorites = getFavorites().map(id => String(id));
+    const isLiked = favorites.includes(String(offer.id));
 
     const heartIcon = document.createElement('i');
     heartIcon.classList.add('heart-icon');
@@ -65,9 +65,16 @@ function CardCreator(offer) {
 
         } else {
             heartIcon.style.color = '#CBD5E1' ;
+
+
+            if(window.location.pathname.includes('offers-submiting.html')) {
+                cardContainer.remove();
+          }
         }
         
     }) ;
+
+    
 
      
 
