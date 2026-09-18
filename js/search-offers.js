@@ -41,6 +41,8 @@ if(searchData != null){
     renderOffers(offersContainer, offers)
 }
 
+offerNumberTag.textContent = `${offers.length} opportunities`
+
 function filterOffers(offers) {
     let newOffers = [...offers]
     const { search, city, contractType, technologiesChoosen, sort } = filterOption;
@@ -75,6 +77,7 @@ function filterOffers(offers) {
         newOffers = newOffers.sort((a, b) => new Date(a.publicationDate).getTime() - new Date(b.publicationDate).getTime())
     }
 
+    offerNumberTag.textContent = `${newOffers.length} opportunities`
     return newOffers
 
 }
